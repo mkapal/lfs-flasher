@@ -49,7 +49,7 @@ inSim.on(PacketType.ISP_MSO, (packet) => {
             return;
           }
 
-          inSim.sendMessage("/light head off");
+          inSim.sendMessage("/light head side");
           setTimeout(() => {
             inSim.sendMessage("/light head high");
             count++;

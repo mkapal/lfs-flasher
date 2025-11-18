@@ -13,6 +13,7 @@ const configSchema = z.object({
   host: z.string().min(1).optional().default("127.0.0.1"),
   port: z.number().min(1).max(65535),
   admin: z.string().min(0).max(16).optional().default(""),
+  mode: z.enum(["high", "low"]).default("high"),
 });
 
 export function loadConfig() {

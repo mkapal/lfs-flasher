@@ -4,7 +4,14 @@
 
 ### Flash command
 
-Typing `/o flash` into the chat input turns on and off the car's high beam every 100 milliseconds for 6 times.
+Using the `/o flash` command switches between low and high beam every 100 milliseconds for 6 times.
+
+#### Mode selection
+
+In `config.txt`, you can set the headlight flashing mode:
+
+- `mode = "high"` - driving headlights are high beam, flashing lights are low beam
+- `mode = "low"` - driving headlights are low beam, flashing lights are high beam
 
 ## Development
 

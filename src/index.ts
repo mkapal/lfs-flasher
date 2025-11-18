@@ -8,7 +8,6 @@ import {
 } from "node-insim/packets";
 
 import { loadConfig } from "./config";
-import { createLog } from "./log";
 
 const config = loadConfig();
 
@@ -21,8 +20,6 @@ inSim.connect({
   Flags: InSimFlags.ISF_LOCAL,
   ReqI: IS_ISI_ReqI.SEND_VERSION,
 });
-
-const log = createLog(inSim);
 
 inSim.on(PacketType.ISP_VER, (packet) => {
   if (packet.ReqI !== IS_ISI_ReqI.SEND_VERSION) {
@@ -49,9 +46,13 @@ inSim.on(PacketType.ISP_MSO, (packet) => {
             return;
           }
 
-          inSim.sendMessage("/light head side");
+          inSim.sendMessage(
+            `/light head ${config.mode === "high" ? "low" : "high"}`,
+          );
           setTimeout(() => {
-            inSim.sendMessage("/light head high");
+            inSim.sendMessage(
+              `/light head ${config.mode === "high" ? "high" : "low"}`,
+            );
             count++;
             setTimeout(flashCycle, interval);
           }, interval);

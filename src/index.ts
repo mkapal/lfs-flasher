@@ -8,21 +8,18 @@ import {
 } from "node-insim/packets";
 
 import { loadConfig } from "./config";
-import { createLog } from "./log";
 
 const config = loadConfig();
 
 const inSim = new InSim();
 inSim.connect({
-  IName: "Headlights",
+  IName: "Flasher",
   Host: config.host,
   Port: config.port,
   Admin: config.admin,
   Flags: InSimFlags.ISF_LOCAL,
   ReqI: IS_ISI_ReqI.SEND_VERSION,
 });
-
-const log = createLog(inSim);
 
 inSim.on(PacketType.ISP_VER, (packet) => {
   if (packet.ReqI !== IS_ISI_ReqI.SEND_VERSION) {

@@ -13,6 +13,8 @@ const configSchema = z.object({
   host: z.string().min(1).optional().default("127.0.0.1"),
   port: z.number().min(1).max(65535),
   admin: z.string().min(0).max(16).optional().default(""),
+  interval: z.number().min(1).max(10000).default(100),
+  count: z.number().min(1).max(1000).default(6),
 });
 
 export function loadConfig() {
@@ -43,6 +45,8 @@ export function loadConfig() {
   log.debug(`Host: ${config.host}`);
   log.debug(`Port: ${config.port}`);
   log.debug(`Admin: ${config.admin ? "***" : "[empty]"}`);
+  log.debug(`Flash interval: ${config.interval}`);
+  log.debug(`Flash cycle count: ${config.count}`);
 
   return config;
 }

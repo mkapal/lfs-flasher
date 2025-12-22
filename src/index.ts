@@ -34,9 +34,6 @@ inSim.on(PacketType.ISP_VER, (packet) => {
   );
 });
 
-const flashCount = 6;
-const interval = 100;
-
 inSim.on(PacketType.ISP_MSO, (packet) => {
   if (packet.UserType === UserType.MSO_O) {
     switch (packet.Msg) {
@@ -44,7 +41,7 @@ inSim.on(PacketType.ISP_MSO, (packet) => {
         let count = 0;
 
         function flashCycle() {
-          if (count >= flashCount) {
+          if (count >= config.count) {
             count = 0;
             return;
           }
@@ -53,8 +50,8 @@ inSim.on(PacketType.ISP_MSO, (packet) => {
           setTimeout(() => {
             inSim.sendMessage("/light head high");
             count++;
-            setTimeout(flashCycle, interval);
-          }, interval);
+            setTimeout(flashCycle, config.interval);
+          }, config.interval);
         }
 
         flashCycle();

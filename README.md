@@ -1,5 +1,9 @@
 # LFS Flasher
 
+## Requirements
+
+- Live for Speed 0.8B or later
+
 ## Features
 
 ### Flash command

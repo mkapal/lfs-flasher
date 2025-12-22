@@ -1,5 +1,5 @@
-import parseLFSMessage from "../parse-lfs-message";
-import unicodeToLfs from "../unicode-to-lfs";
+import parseLFSMessage from "parse-lfs-message";
+import unicodeToLfs from "unicode-to-lfs";
 
 const magic: Record<
   string,
@@ -415,7 +415,7 @@ const pack = function (
   fmt: string,
   values: unknown[],
   offset = 0,
-): Uint8Array | null {
+): Uint8Array<ArrayBuffer> | null {
   const littleendian = fmt.charAt(0) == "<";
   offset = offset ? offset : 0;
 
@@ -485,7 +485,7 @@ function isAlphaNumeric(b: string): boolean {
 }
 
 /** @internal */
-function copyBuffer(buffer: Uint8Array): Uint8Array {
+function copyBuffer(buffer: Uint8Array<ArrayBuffer>): Uint8Array<ArrayBuffer> {
   const dest = new ArrayBuffer(buffer.byteLength);
   const newBuffer = new Uint8Array(dest);
   newBuffer.set(buffer);

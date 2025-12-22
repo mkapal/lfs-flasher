@@ -1,9 +1,11 @@
+import { type packetTypeToClass } from "node-insim/packets";
+
 import { type InSim } from "./InSim";
-import { type packetTypeToClass } from "./packets";
+import { type InSimPacketInstance } from "./packets/types";
 
 export type InSimPacketEvents = {
-  [k in keyof typeof packetTypeToClass]: (
-    packet: (typeof packetTypeToClass)[k]["prototype"],
+  [TPacketType in keyof typeof packetTypeToClass]: (
+    packet: InSimPacketInstance<TPacketType>,
     inSim: InSim,
   ) => void;
 };

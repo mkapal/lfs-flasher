@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "run-s build:ts",

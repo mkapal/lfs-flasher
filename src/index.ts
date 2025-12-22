@@ -29,6 +29,9 @@ inSim.on(PacketType.ISP_VER, (packet) => {
   console.log(
     chalk.green(`Connected to LFS ${packet.Product} ${packet.Version}`),
   );
+  console.log(
+    `Use ${chalk.whiteBright("/o flash")} to flash your low/high beams`,
+  );
 });
 
 const flashCount = 6;
